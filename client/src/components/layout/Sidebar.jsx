@@ -1,21 +1,29 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from "react-router-dom";
 import {
-  LayoutDashboard, Package, Users, Truck, ShoppingCart,
-  Warehouse, Cpu, ListChecks, ChevronDown, ChevronRight,
+  LayoutDashboard,
+  Package,
+  Users,
+  Truck,
+  ShoppingCart,
+  Warehouse,
+  Cpu,
+  ListChecks,
+  ChevronDown,
+  ChevronRight,
   Zap,
-} from 'lucide-react';
-import { useState } from 'react';
+} from "lucide-react";
+import { useState } from "react";
 
 const MenuGroup = ({ label, icon: Icon, children }) => {
   const location = useLocation();
-  const isActive = children.some(c => location.pathname.startsWith(c.to));
+  const isActive = children.some((c) => location.pathname.startsWith(c.to));
   const [open, setOpen] = useState(isActive);
 
   return (
     <div>
       <button
-        onClick={() => setOpen(o => !o)}
-        className={`sidebar-item w-full justify-between ${isActive ? 'text-gray-900 font-medium' : ''}`}
+        onClick={() => setOpen((o) => !o)}
+        className={`sidebar-item w-full justify-between ${isActive ? "text-gray-900 font-medium" : ""}`}
       >
         <span className="flex items-center gap-2.5">
           <Icon size={16} />
@@ -25,12 +33,12 @@ const MenuGroup = ({ label, icon: Icon, children }) => {
       </button>
       {open && (
         <div className="ml-4 pl-2 border-l border-gray-100 mt-0.5 space-y-0.5">
-          {children.map(c => (
+          {children.map((c) => (
             <NavLink
               key={c.to}
               to={c.to}
               className={({ isActive }) =>
-                `sidebar-item text-[13px] ${isActive ? 'active' : ''}`
+                `sidebar-item text-[13px] ${isActive ? "active" : ""}`
               }
             >
               <c.icon size={14} />
@@ -48,11 +56,15 @@ export default function Sidebar() {
     <aside className="w-56 flex-shrink-0 bg-gray-50 border-r border-gray-100 flex flex-col h-screen sticky top-0">
       {/* Logo */}
       <div className="flex items-center gap-2.5 px-4 py-4 border-b border-gray-100">
-        <div className="w-8 h-8 bg-brand-400 rounded-lg flex items-center justify-center">
-          <Zap size={16} className="text-white" />
-        </div>
+        <img
+          src="/MyRPLogo.png"
+          alt="MyRP Logo"
+          className="w-8 h-8 object-contain"
+        />
         <div>
-          <div className="text-sm font-semibold text-gray-900 leading-tight">Planify MRP</div>
+          <div className="text-sm font-semibold text-gray-900 leading-tight">
+            MyRP
+          </div>
           <div className="text-[10px] text-gray-400">v1.0.0</div>
         </div>
       </div>
@@ -61,7 +73,9 @@ export default function Sidebar() {
       <nav className="flex-1 overflow-y-auto p-2 space-y-0.5">
         <NavLink
           to="/dashboard"
-          className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+          className={({ isActive }) =>
+            `sidebar-item ${isActive ? "active" : ""}`
+          }
         >
           <LayoutDashboard size={16} />
           Dashboard
@@ -73,7 +87,9 @@ export default function Sidebar() {
 
         <NavLink
           to="/master/parts"
-          className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+          className={({ isActive }) =>
+            `sidebar-item ${isActive ? "active" : ""}`
+          }
         >
           <Package size={16} />
           Parts
@@ -81,7 +97,9 @@ export default function Sidebar() {
 
         <NavLink
           to="/master/customers"
-          className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+          className={({ isActive }) =>
+            `sidebar-item ${isActive ? "active" : ""}`
+          }
         >
           <Users size={16} />
           Customers
@@ -89,7 +107,9 @@ export default function Sidebar() {
 
         <NavLink
           to="/master/suppliers"
-          className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+          className={({ isActive }) =>
+            `sidebar-item ${isActive ? "active" : ""}`
+          }
         >
           <Truck size={16} />
           Suppliers
@@ -101,7 +121,9 @@ export default function Sidebar() {
 
         <NavLink
           to="/transactions/so"
-          className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+          className={({ isActive }) =>
+            `sidebar-item ${isActive ? "active" : ""}`
+          }
         >
           <ShoppingCart size={16} />
           Sales Orders
@@ -109,7 +131,9 @@ export default function Sidebar() {
 
         <NavLink
           to="/transactions/inventory"
-          className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+          className={({ isActive }) =>
+            `sidebar-item ${isActive ? "active" : ""}`
+          }
         >
           <Warehouse size={16} />
           Inventory
@@ -121,7 +145,9 @@ export default function Sidebar() {
 
         <NavLink
           to="/mrp/engine"
-          className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+          className={({ isActive }) =>
+            `sidebar-item ${isActive ? "active" : ""}`
+          }
         >
           <Cpu size={16} />
           Run MRP
@@ -129,7 +155,9 @@ export default function Sidebar() {
 
         <NavLink
           to="/mrp/suggestions"
-          className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+          className={({ isActive }) =>
+            `sidebar-item ${isActive ? "active" : ""}`
+          }
         >
           <ListChecks size={16} />
           Suggestions
