@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+
 const MenuGroup = ({ label, icon: Icon, children }) => {
   const location = useLocation();
   const isActive = children.some((c) => location.pathname.startsWith(c.to));
